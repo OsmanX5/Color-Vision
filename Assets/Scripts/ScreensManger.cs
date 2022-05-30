@@ -1,30 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ScreensManger : MonoBehaviour
 {
-    // Refrance for UI Screens
-    public GameObject MainMenu;
-    public GameObject Test;
-
-
-    //List contain all the game screens
-    List<GameObject> screens;
-    private void Start()
+    [Serializable]
+    public struct Screen
     {
-        screens = new List<GameObject>();
-        if (MainMenu!=null) screens.Add(MainMenu);
-        if (Test != null) screens.Add(Test);
-
+        public string name;
+        public GameObject Object;
     }
+    //List contain all the game screens
+    public Screen[] screens;
+    
 
     public void ShowScreen(string name)
     {
-        foreach (GameObject screen in screens)
+        foreach (Screen screen in screens)
         {
-            if (screen.name == name) screen.SetActive(true); 
-            else screen.SetActive(false);
+            if (screen.name == name) screen.Object.SetActive(true); 
+            else screen.Object.SetActive(false);
         }
     }
 }
