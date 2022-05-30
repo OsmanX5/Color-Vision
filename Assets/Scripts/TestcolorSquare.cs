@@ -22,7 +22,7 @@ public class TestcolorSquare : MonoBehaviour
                 Random.Range(0f, 1f),
                 Random.Range(0f, 1f));
             if(testManger.PrecntageDiffrance>0.01f)
-            testManger.PrecntageDiffrance *= 0.5f;
+            testManger.PrecntageDiffrance *= 0.8f;
             
             testManger.GenerateTest(original, testManger.PrecntageDiffrance);
         }
