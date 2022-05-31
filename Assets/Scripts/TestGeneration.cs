@@ -9,13 +9,23 @@ public class TestGeneration : MonoBehaviour
     // Script task : Generate test
     // Attatch to  : Attatch to Game manger
 
-    [SerializeField] GameObject testObject;   //Refrance for the game object contains all squars test
-    [SerializeField] TMP_Text text;           //Refrance for the Text that show the diffrance
-    GameObject[] testSquars;                  // Array contains all test squars  
-    public float PrecntageDiffrance= 0.8f;           // float show the precentage diffrance
-    
+    [SerializeField] GameObject testObject;           //Refrance for the game object contains all squars test
+    [SerializeField] TMP_Text PrecentageText;                   //Refrance for the Text that show the diffrance
+    [SerializeField] TMP_Text correctsText;                   //Refrance for the Text that show the diffrance
+    GameObject[] testSquars;                          // Array contains all test squars  
+    public float PrecntageDiffrance;                  // float show the precentage diffrance
+    List<float> startingDiffrance = new List<float>();// Precentage diffrance start foreach level
+    int correct = -1; //number of correct boxes in each level
+    private void Awake()
+    {
+        for(int i=0;i<4; i++)
+        {
+            startingDiffrance.Add(LevelManger.levels[i].x);
+        }
+    }
     void Start()
     {
+        PrecntageDiffrance = startingDiffrance[Player.Level-1];
         GenerateTest(Color.red, PrecntageDiffrance);
     }
 
@@ -24,8 +34,11 @@ public class TestGeneration : MonoBehaviour
     //      precentageDiffrance : the precentage diffrance of the diffrent color
     public void GenerateTest(Color original,float precentageDiffrance)
     {
-        // 1- show the precentageDiffrance in the TMP text
-        text.text = (PrecntageDiffrance * 100).ToString("0");
+        
+        // 1- show the precentageDiffrance and corrects in the TMP text
+        PrecentageText.text = (PrecntageDiffrance * 100).ToString("0");
+        correct += 1;
+        correctsText.text = correct.ToString();
         // 2- Generate an empty array of 25 game object
         testSquars = new GameObject[25];
         // 3- Assign the squars of the [testObject] to Array and set thier color to original

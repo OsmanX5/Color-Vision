@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bfedb16aa7fb9349a05c1abb289151c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  diffrance: 0
+  correct: 0
 --- !u!114 &3608811044255304813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5417199182800311680}
         m_TargetAssemblyTypeName: TestcolorSquare, Assembly-CSharp
-        m_MethodName: Reload
+        m_MethodName: ReGenerateTheTest
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -158,7 +158,7 @@ GameObject:
   - component: {fileID: 3394966252167123019}
   - component: {fileID: 4414554649167914132}
   m_Layer: 5
-  m_Name: Border
+  m_Name: SquareTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

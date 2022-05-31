@@ -41,6 +41,7 @@ public class TestcolorSquare : MonoBehaviour
     }
     void TestEnd()
     {
-
+        Player.maxDiffrance = testManger.PrecntageDiffrance;
+        LevelManger.UpdatePlayerLevel();
     }
 }
