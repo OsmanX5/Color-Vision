@@ -47,8 +47,14 @@ public class TestGeneration : MonoBehaviour
         correctsText.text = correct.ToString();
         Vector2 levelLimits = LevelManger.levels[Player.Level - 1];
         float Progress = (precentageDiffrance - levelLimits.x) / (levelLimits.y - levelLimits.x);
+        // 1.1- if progress >=1 Make LevelUp
+        if (Progress >= 1)
+        {
+            LevelUp();
+            Progress = 9;
+        }
         progressSlider.value = Progress;
-        
+
         // 2- Generate an empty array of 25 game object
         testSquars = new GameObject[25];
         // 3- Assign the squars of the [testObject] to Array and set thier color to original
@@ -65,11 +71,6 @@ public class TestGeneration : MonoBehaviour
         testSquars[rand].GetComponent<Image>().color = diffrent;
         testSquars[rand].GetComponent<TestcolorSquare>().correct = true;
 
-        // 6- if progress >=1 Make LevelUp
-        if (Progress >= 1)
-        {
-            LevelUp();
-        }
     }
     void LevelUp()
     {
