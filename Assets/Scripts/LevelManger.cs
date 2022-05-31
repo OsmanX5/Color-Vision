@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelManger : MonoBehaviour
 {
+    public List<Sprite> levelsIcons;
     public static List<Vector2> levels = new List<Vector2>() {
         new Vector2(1f,0.3f),
         new Vector2(0.29f,0.15f),
@@ -20,5 +21,13 @@ public class LevelManger : MonoBehaviour
     }
     public static void UpdatePlayerLevel(){
         Player.Level = getTheLevel(Player.maxDiffrance);
+    }
+    public  Sprite getLevelSprite(int level)
+    {
+        return levelsIcons[level - 1];
+    }
+    public static void LevelUp()
+    {
+        Player.Level += 1;
     }
 }

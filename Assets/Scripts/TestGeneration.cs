@@ -10,14 +10,20 @@ public class TestGeneration : MonoBehaviour
     // Attatch to  : Attatch to Game manger
 
     [SerializeField] GameObject testObject;           //Refrance for the game object contains all squars test
-    [SerializeField] TMP_Text PrecentageText;                   //Refrance for the Text that show the diffrance
-    [SerializeField] TMP_Text correctsText;                   //Refrance for the Text that show the diffrance
+    [SerializeField] TMP_Text PrecentageText;         //Refrance for the Text that show the diffrance
+    [SerializeField] TMP_Text correctsText;           //Refrance for the Text that show the corrects
+    [SerializeField] Slider progressSlider;           //Refrance for the Slider that show the progress
+    [SerializeField] Image currentLevelIcon;          //Refrance for the current level icon on progress
+    [SerializeField] Image NextLevelIcon;             //Refrance for the next level icon on progress
+    [SerializeField] LevelManger levelManger;         //Refrance for the level manger
     GameObject[] testSquars;                          // Array contains all test squars  
     public float PrecntageDiffrance;                  // float show the precentage diffrance
     List<float> startingDiffrance = new List<float>();// Precentage diffrance start foreach level
     int correct = -1; //number of correct boxes in each level
+    
     private void Awake()
     {
+
         for(int i=0;i<4; i++)
         {
             startingDiffrance.Add(LevelManger.levels[i].x);
@@ -35,10 +41,14 @@ public class TestGeneration : MonoBehaviour
     public void GenerateTest(Color original,float precentageDiffrance)
     {
         
-        // 1- show the precentageDiffrance and corrects in the TMP text
+        // 1- show the precentageDiffrance and corrects and progress slider in the TMP text
         PrecentageText.text = (PrecntageDiffrance * 100).ToString("0");
         correct += 1;
         correctsText.text = correct.ToString();
+        Vector2 levelLimits = LevelManger.levels[Player.Level - 1];
+        float Progress = (precentageDiffrance - levelLimits.x) / (levelLimits.y - levelLimits.x);
+        progressSlider.value = Progress;
+        
         // 2- Generate an empty array of 25 game object
         testSquars = new GameObject[25];
         // 3- Assign the squars of the [testObject] to Array and set thier color to original
@@ -54,5 +64,17 @@ public class TestGeneration : MonoBehaviour
         Color diffrent = original * (1 -precentageDiffrance);
         testSquars[rand].GetComponent<Image>().color = diffrent;
         testSquars[rand].GetComponent<TestcolorSquare>().correct = true;
+
+        // 6- if progress >=1 Make LevelUp
+        if (Progress >= 1)
+        {
+            LevelUp();
+        }
+    }
+    void LevelUp()
+    {
+        LevelManger.LevelUp();
+        currentLevelIcon.sprite = levelManger.getLevelSprite(Player.Level);
+        NextLevelIcon.sprite = levelManger.getLevelSprite(Player.Level + 1);
     }
 }
