@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestcolorSquare : MonoBehaviour
 {
-    public bool diffrance = false;
+    public bool correct = false;
     GameObject manger;
     TestGeneration testManger;
     private void Awake()
@@ -15,7 +15,7 @@ public class TestcolorSquare : MonoBehaviour
     public void Reload()
     {
         
-        if (diffrance)
+        if (correct)
         {
             Color original = new Color(
                 Random.Range(0f, 1f),
