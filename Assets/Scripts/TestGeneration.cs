@@ -23,6 +23,7 @@ public class TestGeneration : MonoBehaviour
         {
             testSquars[i] = testObject.transform.GetChild(i).transform.GetChild(0).gameObject;
             testSquars[i].GetComponent<Image>().color = original;
+            testSquars[i].GetComponent<TestcolorSquare>().diffrance = false;
         }
         int rand = Random.Range(0,24);
         Color diffrent = original * (1 -precentageDiffrance);
