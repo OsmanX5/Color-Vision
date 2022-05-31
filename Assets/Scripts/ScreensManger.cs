@@ -5,22 +5,29 @@ using UnityEngine;
 
 public class ScreensManger : MonoBehaviour
 {
-    [Serializable]
-    public struct Screen
-    {
-        public string name;
-        public GameObject Object;
-    }
-    //List contain all the game screens
-    public Screen[] screens;
-    
+    // Script name : ScreensManger
+    // Script task : Control in showing screens
+    // Attatch to  : Attatch to Game manger
 
+    [SerializeField] GameObject ScreensHolder; //The game object contains all screen
+    List<GameObject> screens = new List<GameObject>(); //List contain all the game screens
+
+    private void Awake()
+    {
+        //Assign screens to the list
+        for(int i=0;i< ScreensHolder.transform.childCount; i++)
+        {
+            screens.Add(ScreensHolder.transform.GetChild(i).gameObject);
+        }
+    }
     public void ShowScreen(string name)
     {
-        foreach (Screen screen in screens)
+        // Function task : Activate the screen "name" and disactive the other 
+        // Function calling: when a button pressed in Main menue screen
+        foreach (GameObject screen in screens)
         {
-            if (screen.name == name) screen.Object.SetActive(true); 
-            else screen.Object.SetActive(false);
+            if (screen.name == name) screen.SetActive(true); 
+            else screen.SetActive(false);
         }
     }
 }
