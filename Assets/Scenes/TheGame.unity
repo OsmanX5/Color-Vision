@@ -8418,9 +8418,9 @@ MonoBehaviour:
   PrecentageText: {fileID: 25275372}
   correctsText: {fileID: 1655491144}
   progressSlider: {fileID: 1351212943}
-  currentLevelIcon: {fileID: 0}
-  NextLevelIcon: {fileID: 0}
-  levelManger: {fileID: 0}
+  currentLevelIcon: {fileID: 131113942}
+  NextLevelIcon: {fileID: 461696498}
+  levelManger: {fileID: 876613097}
   PrecntageDiffrance: 1
 --- !u!114 &876613097
 MonoBehaviour:
@@ -8439,6 +8439,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5817a3e38a313b7449ed5ebf4eef8c00, type: 3}
   - {fileID: 21300000, guid: 601f4acefe66c404e9ab813ebc14917c, type: 3}
   - {fileID: 21300000, guid: ad7f755d5804ad14d9c7808aa6d57602, type: 3}
+  - {fileID: 21300000, guid: ad86f808bbc14d647b1bb0d9795d68c9, type: 3}
 --- !u!114 &876613098
 MonoBehaviour:
   m_ObjectHideFlags: 0
