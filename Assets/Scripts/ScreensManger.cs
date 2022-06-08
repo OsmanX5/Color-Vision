@@ -19,6 +19,7 @@ public class ScreensManger : MonoBehaviour
         {
             screens.Add(ScreensHolder.transform.GetChild(i).gameObject);
         }
+        ShowScreen("MainMenu");
     }
     public void ShowScreen(string name)
     {
